@@ -1,0 +1,4 @@
+keepalived_packages:
+  - keepalived
+vrrp_password: secret
+vrrp_router_id: 97

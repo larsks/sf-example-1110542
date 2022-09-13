@@ -1,0 +1,13 @@
+all:
+  vars:
+    ansible_user: root
+  children:
+    frontend:
+      hosts:
+        node0.virt:
+          vrrp_state: MASTER
+        node1.virt:
+          vrrp_state: BACKUP
+    backend:
+      hosts:
+        node2.virt:

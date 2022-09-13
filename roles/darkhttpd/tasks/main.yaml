@@ -1,0 +1,27 @@
+- name: install darkhttpd
+  package:
+    name: "{{ darkhttpd_packages }}"
+    state: installed
+
+- name: create document root
+  file:
+    path: /var/www
+    state: directory
+
+- name: create index document
+  template:
+    src: index.html
+    dest: /var/www/index.html
+
+- name: configure darkhttpd
+  template:
+    src: darkhttpd.env
+    dest: /etc/sysconfig/darkhttpd
+  notify:
+    - restart darkhttpd
+
+- name: activate darkhttpd
+  service:
+    name: darkhttpd
+    state: started
+    enabled: true

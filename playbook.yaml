@@ -1,0 +1,15 @@
+- hosts: all
+
+- hosts: frontend
+  collections:
+    - ansible.posix
+  tasks:
+    - include_role:
+        name: keepalived
+    - include_role:
+        name: haproxy
+
+- hosts: backend
+  tasks:
+    - include_role:
+        name: darkhttpd

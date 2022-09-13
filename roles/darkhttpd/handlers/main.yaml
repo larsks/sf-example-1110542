@@ -1,0 +1,4 @@
+- name: restart darkhttpd
+  service:
+    name: darkhttpd
+    state: restarted
